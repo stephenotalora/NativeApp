@@ -2,71 +2,42 @@
  * React Native Webpack Starter Kit
  * https://github.com/jhabdas/react-native-webpack-starter-kit
  */
-import React, { Component, PropTypes } from 'react-native';
 
-let {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-} = React;
+import React, { PropTypes } from 'react-native';
+import Title from './generic/Title';
+import AppStyle from '../global_stylesheet/AppStyles';
+import DisplayList from './generic/DisplayList';
+import moment from 'moment';
 
-class App extends Component {
+// Symbolic constants
+const { View, Text } = React;
+const WEEK_DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Staturday'];
 
+class App extends React.Component {
   static propTypes = {
-    instructions: PropTypes.string,
-  }
+    instructions: PropTypes.string
+  };
 
-  static defaultProps = {
-    ...Component.defaultProps,
-    instructions: 'Usage instructions not provided.',
-  }
-
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      platform: Platform.OS,
-    };
-  }
-
+  /**
+   * life cycle
+   * @returns {React Component}
+   */
   render() {
-    const { instructions } = this.props;
-    let { platform } = this.state;
-
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.{platform}.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      <View style={AppStyle.container}>
+        <Title />
+        <DisplayList arr={WEEK_DAYS} highLight={App.sortWeekDays()} />
       </View>
     );
   }
-}
 
-let styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+  static sortWeekDays() {
+    return WEEK_DAYS.indexOf(moment().format('dddd'));
+  }
+
+  constructor(props) {
+    super(props);
+  }
+}
 
 export default App;

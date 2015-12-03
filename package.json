@@ -13,6 +13,7 @@
     "url": "https://github.com/jhabdas/react-native-webpack-starter-kit"
   },
   "dependencies": {
+    "moment": "^2.10.6",
     "react-native": "0.13 - 0.14"
   },
   "devDependencies": {
@@ -24,8 +25,8 @@
     "babel-preset-stage-1": "^6.1.2",
     "eslint": "^1.8.0",
     "eslint-loader": "^1.1.1",
-    "eslint-plugin-react": "^3.6.3",
-    "react-native-webpack-server": "^0.8.0",
+    "eslint-plugin-react": "^3.11.2",
+    "react-native-webpack-server": "^0.8.1",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
   },
